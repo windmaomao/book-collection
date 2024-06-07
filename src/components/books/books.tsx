@@ -48,33 +48,31 @@ export default function Books() {
           <TableColumn>CATEGORY</TableColumn>
         </TableHeader>
         <TableBody>
-          {books.map(
-            ({ id, title, author, genre, rating, categories, tags }) => (
-              <TableRow key={id}>
-                <TableCell>{title}</TableCell>
-                <TableCell>{author}</TableCell>
-                <TableCell>{genre}</TableCell>
-                <TableCell className={styles.star}>
-                  {new Array(rating).fill("★").join("")}
-                </TableCell>
-                <TableCell>
-                  <div className={styles.tags}>
-                    {categories.map(id => (
-                      <Chip
-                        key={id}
-                        color="warning"
-                        variant="flat"
-                        size="sm"
-                        className="mx-1"
-                      >
-                        {catLabels[id]}
-                      </Chip>
-                    ))}
-                  </div>
-                </TableCell>
-              </TableRow>
-            ),
-          )}
+          {books.map(({ id, title, author, genre, rating, categories }) => (
+            <TableRow key={id}>
+              <TableCell>{title}</TableCell>
+              <TableCell>{author}</TableCell>
+              <TableCell>{genre}</TableCell>
+              <TableCell className={styles.star}>
+                {new Array(rating).fill("★").join("")}
+              </TableCell>
+              <TableCell>
+                <div className={styles.tags}>
+                  {categories.map(id => (
+                    <Chip
+                      key={id}
+                      color="warning"
+                      variant="flat"
+                      size="sm"
+                      className="mx-1"
+                    >
+                      {catLabels[id]}
+                    </Chip>
+                  ))}
+                </div>
+              </TableCell>
+            </TableRow>
+          ))}
         </TableBody>
       </Table>
     </div>
