@@ -1,5 +1,5 @@
-import React from 'react';
-export const EditIcon = props => (
+import React from "react";
+export const EditIcon = () => (
   <svg
     aria-hidden="true"
     fill="none"
@@ -8,7 +8,6 @@ export const EditIcon = props => (
     role="presentation"
     viewBox="0 0 20 20"
     width="1em"
-    {...props}
   >
     <path
       d="M11.05 3.00002L4.20835 10.2417C3.95002 10.5167 3.70002 11.0584 3.65002 11.4334L3.34169 14.1334C3.23335 15.1084 3.93335 15.775 4.90002 15.6084L7.58335 15.15C7.95835 15.0834 8.48335 14.8084 8.74168 14.525L15.5834 7.28335C16.7667 6.03335 17.3 4.60835 15.4583 2.86668C13.625 1.14168 12.2334 1.75002 11.05 3.00002Z"
@@ -37,7 +36,7 @@ export const EditIcon = props => (
   </svg>
 );
 
-export const DeleteIcon = props => (
+export const DeleteIcon = () => (
   <svg
     aria-hidden="true"
     fill="none"
@@ -46,7 +45,6 @@ export const DeleteIcon = props => (
     role="presentation"
     viewBox="0 0 20 20"
     width="1em"
-    {...props}
   >
     <path
       d="M17.5 4.98332C14.725 4.70832 11.9333 4.56665 9.15 4.56665C7.5 4.56665 5.85 4.64998 4.2 4.81665L2.5 4.98332"
@@ -86,7 +84,7 @@ export const DeleteIcon = props => (
   </svg>
 );
 
-export const EyeIcon = props => (
+export const EyeIcon = () => (
   <svg
     aria-hidden="true"
     fill="none"
@@ -95,7 +93,6 @@ export const EyeIcon = props => (
     role="presentation"
     viewBox="0 0 20 20"
     width="1em"
-    {...props}
   >
     <path
       d="M12.9833 10C12.9833 11.65 11.65 12.9833 10 12.9833C8.35 12.9833 7.01666 11.65 7.01666 10C7.01666 8.35 8.35 7.01666 10 7.01666C11.65 7.01666 12.9833 8.35 12.9833 10Z"

@@ -1,8 +1,8 @@
 export type SiteConfig = typeof siteConfig;
 
 export const siteConfig = {
-  name: "Vite + NextUI",
-  description: "Make beautiful websites regardless of your design experience.",
+  name: "Books",
+  description: "Make beautiful books.",
   navItems: [
     {
       label: "Home",
@@ -26,8 +26,5 @@ export const siteConfig = {
   links: {
     github: "https://github.com/windmaomao/book-collection",
     books: "/books",
-    twitter: "https://twitter.com/getnextui",
-    discord: "https://discord.gg/9b6yyZKmH4",
-    sponsor: "https://patreon.com/jrgarciadev",
   },
 };
