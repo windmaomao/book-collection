@@ -1,0 +1,12 @@
+.star {
+  color: darkgray;
+}
+.star:hover {
+  color: black;
+}
+
+.tags {
+  display: flex;
+  gap: 1px;
+  flex-wrap: wrap;
+}
