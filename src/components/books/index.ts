@@ -1,3 +1,3 @@
-import Books from "./Books.tsx";
+import Books from "./books.tsx";
 
 export { Books };
