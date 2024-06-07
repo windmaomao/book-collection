@@ -7,12 +7,13 @@ import { siteConfig } from "@/config/site";
 import { title, subtitle } from "@/components/primitives";
 import { GithubIcon } from "@/components/icons";
 import DefaultLayout from "@/layouts/default";
+import { Books } from "@/components/books";
 
 export default function IndexPage() {
   return (
     <DefaultLayout>
-      <section className='flex flex-col items-center justify-center gap-4 py-8 md:py-10'>
-        <div className='inline-block max-w-lg text-center justify-center'>
+      <section className="flex flex-col items-center justify-center gap-4 py-8 md:py-10">
+        <div className="inline-block max-w-lg text-center justify-center">
           <h1 className={title()}>Book Collection&nbsp;</h1>
           <h1 className={title({ color: "violet" })}>Inventory</h1>
           <br />
@@ -21,7 +22,7 @@ export default function IndexPage() {
           </h4>
         </div>
 
-        <div className='flex gap-3'>
+        <div className="flex gap-3">
           <Link
             isExternal
             className={buttonStyles({
@@ -43,13 +44,8 @@ export default function IndexPage() {
           </Link>
         </div>
 
-        <div className='mt-8'>
-          <Snippet hideCopyButton hideSymbol variant='bordered'>
-            <span>
-              Get started by
-              <Code color='primary'>npm install</Code>
-            </span>
-          </Snippet>
+        <div className="mt-8">
+          <Books />
         </div>
       </section>
     </DefaultLayout>
