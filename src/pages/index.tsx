@@ -1,6 +1,4 @@
 import { Link } from "@nextui-org/link";
-import { Snippet } from "@nextui-org/snippet";
-import { Code } from "@nextui-org/code";
 import { button as buttonStyles } from "@nextui-org/theme";
 
 import { siteConfig } from "@/config/site";
@@ -32,7 +30,7 @@ export default function IndexPage() {
             })}
             href={siteConfig.links.books}
           >
-            Checkout our books
+            Deployed
           </Link>
           <Link
             isExternal
@@ -40,7 +38,7 @@ export default function IndexPage() {
             href={siteConfig.links.github}
           >
             <GithubIcon size={20} />
-            GitHub
+            Source code
           </Link>
         </div>
 

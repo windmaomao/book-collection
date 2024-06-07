@@ -25,6 +25,6 @@ export const siteConfig = {
   ],
   links: {
     github: "https://github.com/windmaomao/book-collection",
-    books: "/books",
+    books: "https://windmaomao.github.io/book-collection/",
   },
 };
