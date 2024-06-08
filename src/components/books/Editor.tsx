@@ -7,9 +7,13 @@ import {
   ModalFooter,
   Button,
   Input,
+  Select,
+  SelectItem,
+  Selection,
 } from "@nextui-org/react";
 
 import { Book } from "@/types/data";
+import useBookStore from "@/hooks/use-data";
 
 interface EditorProps {
   isOpen: boolean;
@@ -25,10 +29,22 @@ export default function Editor({ isOpen, book, close }: EditorProps) {
       [name]: value,
     });
   };
-  const { title, author, genre } = values;
+  const onValuesChange = (vs: Selection) => {
+    const cats = Array.from(vs)
+      .map(v => parseInt(v as string))
+      .sort();
+
+    setValues({
+      ...values,
+      categories: cats,
+    });
+  };
+  const { title, author, genre, categories } = values;
   const onPress = () => {
     close(values);
   };
+
+  const { categories: categoryList } = useBookStore();
 
   return (
     <Modal isOpen={isOpen} onOpenChange={() => close(null)}>
@@ -38,33 +54,44 @@ export default function Editor({ isOpen, book, close }: EditorProps) {
             <ModalHeader className="flex flex-col gap-1">Edit Book</ModalHeader>
             <ModalBody>
               <Input
-                type="text"
                 label="Title"
                 placeholder="Enter book title"
+                type="text"
                 value={title}
                 onValueChange={onValueChange("title")}
               />
               <Input
-                type="text"
                 label="Author"
                 placeholder="Enter book author"
+                type="text"
                 value={author}
                 onValueChange={onValueChange("author")}
               />
               <Input
-                type="text"
                 label="Author"
                 placeholder="Enter book author"
+                type="text"
                 value={genre}
                 onValueChange={onValueChange("genre")}
               />
+              <Select
+                label="Categories"
+                placeholder="Select a category"
+                selectedKeys={categories.map(v => `${v}`)}
+                selectionMode="multiple"
+                onSelectionChange={onValuesChange}
+              >
+                {categoryList.map(({ id, name }) => (
+                  <SelectItem key={id}>{name}</SelectItem>
+                ))}
+              </Select>
             </ModalBody>
             <ModalFooter>
               <Button color="danger" variant="light" onPress={onClose}>
                 Close
               </Button>
               <Button color="primary" onPress={onPress}>
-                Action
+                Save
               </Button>
             </ModalFooter>
           </>

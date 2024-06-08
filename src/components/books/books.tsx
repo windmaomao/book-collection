@@ -43,7 +43,6 @@ export default function Books() {
   };
   const onEditEnd = (book: Book | null) => {
     if (book) {
-      console.log(book);
       editBook(book);
     }
     onOpenChange();
@@ -54,7 +53,12 @@ export default function Books() {
       <div className="flex justify-end">
         <Categories />
         {bookEdit && (
-          <Editor book={bookEdit} close={onEditEnd} isOpen={isOpen} />
+          <Editor
+            key={bookEdit.id}
+            book={bookEdit}
+            close={onEditEnd}
+            isOpen={isOpen}
+          />
         )}
       </div>
       <Table aria-label="Example static collection table" color="primary">
