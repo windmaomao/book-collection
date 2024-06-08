@@ -8,7 +8,7 @@ import {
   Input,
 } from "@nextui-org/react";
 
-import useData from "@/hooks/use-data";
+import useData from "@/hooks/use-bookstore";
 
 export default function Categories() {
   const { categories, addCategory, removeCategory } = useData();

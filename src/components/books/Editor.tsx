@@ -13,7 +13,7 @@ import {
 } from "@nextui-org/react";
 
 import { Book } from "@/types/data";
-import useBookStore from "@/hooks/use-data";
+import useBookStore from "@/hooks/use-bookstore";
 
 interface EditorProps {
   isOpen: boolean;

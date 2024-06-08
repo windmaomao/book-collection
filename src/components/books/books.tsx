@@ -16,7 +16,7 @@ import styles from "./books.module.css";
 import Categories from "./Categories";
 import Editor from "./Editor";
 
-import useBookStore from "@/hooks/use-data";
+import useBookStore from "@/hooks/use-bookstore";
 import { Book } from "@/types/data";
 
 export default function Books() {
