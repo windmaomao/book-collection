@@ -70,7 +70,7 @@ export default function Books() {
           <TableColumn>CATEGORY</TableColumn>
           <TableColumn>&nbsp;</TableColumn>
         </TableHeader>
-        <TableBody>
+        <TableBody emptyContent={"No rows to display."}>
           {books.map(({ id, title, author, genre, rating, categories }) => (
             <TableRow key={id}>
               <TableCell>{title}</TableCell>
@@ -84,10 +84,10 @@ export default function Books() {
                   {categories.map(id => (
                     <Chip
                       key={id}
-                      color="warning"
-                      variant="flat"
-                      size="sm"
                       className="mx-1"
+                      color="warning"
+                      size="sm"
+                      variant="flat"
                     >
                       {catName(id)}
                     </Chip>

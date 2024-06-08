@@ -1,7 +1,6 @@
 import { useState } from "react";
 import {
   Badge,
-  Chip,
   Popover,
   PopoverTrigger,
   PopoverContent,
@@ -46,19 +45,19 @@ export default function Categories() {
           </Button>
         </PopoverTrigger>
         <PopoverContent>
-          <div className="flex flex-col gap-2">
+          <div className="flex flex-col gap-2 w-32 cursor-pointer">
             <div key="add" className="flex justify-between gap-1">
               <Input size="sm" value={value} onChange={onChange} />
-              <Button color="primary" size="sm" onClick={onAdd}>
+              <button className="" onClick={onAdd}>
                 +
-              </Button>
+              </button>
             </div>
             <div>
               {filtered.map(({ id, name }) => (
-                <Chip key={id} size="sm">
+                <div key={id} className="flex justify-between text-xs">
                   <span>{name}</span>
                   <button onClick={onRemove(name)}>x</button>
-                </Chip>
+                </div>
               ))}
             </div>
           </div>
