@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   Table,
   TableHeader,
@@ -9,6 +9,7 @@ import {
   Chip,
   Tooltip,
   useDisclosure,
+  Spinner,
 } from "@nextui-org/react";
 
 import { EditIcon, DeleteIcon } from "./icons";
@@ -17,10 +18,11 @@ import Categories from "./Categories";
 import Editor from "./Editor";
 
 import useBookStore from "@/hooks/use-bookstore";
+import useData from "@/hooks/use-data";
 import { Book } from "@/types/data";
 
 export default function Books() {
-  const { books, categories, deleteBook, editBook } = useBookStore();
+  const { books, categories, deleteBook, editBook, setBooks } = useBookStore();
 
   const catName = (id: number): string => {
     const found = categories.find(v => v.id === id);
@@ -48,6 +50,14 @@ export default function Books() {
     onOpenChange();
   };
 
+  const { data, loading } = useData();
+
+  useEffect(() => {
+    if (data) {
+      setBooks(data);
+    }
+  }, [data]);
+
   return (
     <div>
       <div className="flex justify-end">
@@ -70,7 +80,11 @@ export default function Books() {
           <TableColumn>CATEGORY</TableColumn>
           <TableColumn>&nbsp;</TableColumn>
         </TableHeader>
-        <TableBody emptyContent={"No rows to display."}>
+        <TableBody
+          emptyContent={"No rows to display."}
+          isLoading={loading}
+          loadingContent={<Spinner label="Loading..." />}
+        >
           {books.map(({ id, title, author, genre, rating, categories }) => (
             <TableRow key={id}>
               <TableCell>{title}</TableCell>

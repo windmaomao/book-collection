@@ -1,11 +1,12 @@
 import { create } from "zustand";
 
-import { Book, booksMock, Category, categoriesMock } from "@/types/data";
+import { Book, Category, categoriesMock } from "@/types/data";
 
 let counter = 100;
 
 interface BookState {
   books: Book[];
+  setBooks: (books: Book[]) => void;
   editBook: (book: Book) => void;
   deleteBook: (id: number) => void;
   categories: Category[];
@@ -14,7 +15,9 @@ interface BookState {
 }
 
 const useBookStore = create<BookState>()(set => ({
-  books: booksMock,
+  // books: booksMock,
+  books: [],
+  setBooks: books => set(() => ({ books })),
   editBook: book =>
     set(state => {
       const found = state.books.find(v => v.id === book.id);
