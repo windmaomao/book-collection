@@ -25,7 +25,7 @@ export default function Editor({ isOpen, book, close }: EditorProps) {
       [name]: value,
     });
   };
-  const { id, title, author, genre } = values;
+  const { title, author, genre } = values;
   const onPress = () => {
     close(values);
   };
