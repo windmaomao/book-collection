@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   Table,
   TableHeader,
@@ -7,16 +8,19 @@ import {
   TableCell,
   Chip,
   Tooltip,
+  useDisclosure,
 } from "@nextui-org/react";
 
 import { EditIcon, DeleteIcon } from "./icons";
 import styles from "./books.module.css";
 import Categories from "./Categories";
+import Editor from "./Editor";
 
 import useBookStore from "@/hooks/use-data";
+import { Book } from "@/types/data";
 
 export default function Books() {
-  const { books, categories, deleteBook } = useBookStore();
+  const { books, categories, deleteBook, editBook } = useBookStore();
 
   const catName = (id: number): string => {
     const found = categories.find(v => v.id === id);
@@ -28,10 +32,30 @@ export default function Books() {
     deleteBook(id);
   };
 
+  const { isOpen, onOpen, onOpenChange } = useDisclosure();
+  const [bookEdit, setBookEdit] = useState<Book>();
+  const onEditStart = (id: number) => () => {
+    const found = books.find(v => v.id === id);
+
+    if (!found) return;
+    setBookEdit(found);
+    onOpen();
+  };
+  const onEditEnd = (book: Book | null) => {
+    if (book) {
+      console.log(book);
+      editBook(book);
+    }
+    onOpenChange();
+  };
+
   return (
     <div>
-      <div className="flex justify-between">
+      <div className="flex justify-end">
         <Categories />
+        {bookEdit && (
+          <Editor book={bookEdit} close={onEditEnd} isOpen={isOpen} />
+        )}
       </div>
       <Table aria-label="Example static collection table" color="primary">
         <TableHeader>
@@ -70,7 +94,7 @@ export default function Books() {
                 <div className="relative flex items-center gap-2">
                   <Tooltip content="Edit book">
                     <span className="text-large cursor-pointer active:opacity-50">
-                      <EditIcon />
+                      <EditIcon onClick={onEditStart(id)} />
                     </span>
                   </Tooltip>
                   <Tooltip color="danger" content="Delete book">

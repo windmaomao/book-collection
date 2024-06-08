@@ -17,6 +17,12 @@ const useBookStore = create<BookState>()(set => ({
   books: booksMock,
   editBook: book =>
     set(state => {
+      const found = state.books.find(v => v.id === book.id);
+
+      if (found) {
+        Object.assign(found, book);
+      }
+
       return { books: [...state.books] };
     }),
   deleteBook: id =>
